@@ -11,12 +11,13 @@ const createEmployeeRecord = (row) => {
     }
 };
 
-const createEmployeeRecords = () => {
-    return this.map(row => {
+const createEmployeeRecords = (array) => {
+    return array.map(row => {
         return createEmployeeRecord(row)
     });
 };
 
+const createTimeInEvent = ()
 
 /*
  We're giving you this function. Take a look at it, you might see some usage
