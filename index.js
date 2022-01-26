@@ -1,5 +1,23 @@
 /* Your Code Here */
 
+const createEmployeeRecord = (row) => {
+    return {
+        firstName: row[0],
+        familyName: row[1],
+        title: row[2],
+        payPerHour: row[3],
+        timeInEvents: [],
+        timeOutEvents: []
+    }
+};
+
+const createEmployeeRecords = () => {
+    return this.map(row => {
+        return createEmployeeRecord(row)
+    });
+};
+
+
 /*
  We're giving you this function. Take a look at it, you might see some usage
  that's new and different. That's because we're avoiding a well-known, but
