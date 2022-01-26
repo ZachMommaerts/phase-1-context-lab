@@ -54,9 +54,21 @@ const hoursWorkedOnDate = function(dateTime){
 }
 
 const wagesEarnedOnDate = function(dateTime){
-    let rawWage = hoursWorkedOnDate(dateTime)
+    let rawWage = hoursWorkedOnDate.call(this, dateTime)
         * this.payPerHour
     return parseFloat(rawWage.toString())
+}
+
+const allWagesFor = function(){
+    let eligibleDates = this.timeInEvents.map(function(e){
+        return e.date
+    })
+
+    let payable = eligibleDates.reduce(function(memo, d){
+        return memo + wagesEarnedOnDate.call(this, d)
+    }, 0)
+
+    return payable
 }
 
 /*
