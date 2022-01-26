@@ -17,7 +17,17 @@ const createEmployeeRecords = (array) => {
     });
 };
 
-const createTimeInEvent = ()
+const createTimeInEvent = (dateTime) => {
+    let [date, hour] = dateTime.split(' ')
+
+    this.timeInEvents.push({
+        type: 'TimeIn',
+        hour: parseInt(hour, 10),
+        date,
+    })
+
+    return this.timeInEvents
+}
 
 /*
  We're giving you this function. Take a look at it, you might see some usage
