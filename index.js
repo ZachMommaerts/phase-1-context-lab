@@ -17,7 +17,7 @@ const createEmployeeRecords = (array) => {
     });
 };
 
-const createTimeInEvent = (dateTime) => {
+const createTimeInEvent = function(dateTime){
     let [date, hour] = dateTime.split(' ')
 
     this.timeInEvents.push({
@@ -26,7 +26,37 @@ const createTimeInEvent = (dateTime) => {
         date,
     })
 
-    return this.timeInEvents
+    return this
+}
+
+const createTimeOutEvent = function(dateTime){
+    let [date, hour] = dateTime.split(' ')
+
+    this.timeOutEvents.push({
+        type: 'TimeOut',
+        hour: parseInt(hour, 10),
+        date,
+    })
+
+    return this
+}
+
+const hoursWorkedOnDate = function(dateTime){
+    let inEvent = this.timeInEvents.find(function(e){
+        return e.date === dateTime
+    })
+
+    let outEvent = this.timeOutEvents.find(function(e){
+        return e.date === dateTime
+    })
+
+    return (outEvent.hour - inEvent.hour) / 100
+}
+
+const wagesEarnedOnDate = function(dateTime){
+    let rawWage = hoursWorkedOnDate(dateTime)
+        * this.payPerHour
+    return parseFloat(rawWage.toString())
 }
 
 /*
